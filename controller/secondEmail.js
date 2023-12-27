@@ -1,7 +1,7 @@
 const {transporter}=require('../utils/nodemailer');
 
 
-async function sendEmail(){
+async function sendEmail(regno,date,name,id){
     const mailOptions = {
         from: `PERKS <shahbazrafique429@gmail.com>`,
         to: 'shahbazrafique101@gmail.com',
@@ -22,15 +22,15 @@ async function sendEmail(){
                 <img class="banner" src="https://cdn.glitch.global/4188ec93-5053-4d82-af14-6b255616e392/JPG%206.jpg?v=1702713266564" alt="Banner" style="width: 100%; max-width: 600px; height: auto;">
         
                 <!-- Heading -->
-                <h1>Quotation - SDF35363</h1>
+                <h1>Quotation - ${regno}</h1>
         
                 <!-- Email Content -->
-                <p>Dear Shahbaz,</p>
-                <p>We refer to your request for quotation(s) dated 12-16-2023 12:34:00 for vehicle registration number SDF35363.</p>
+                <p>Dear ${name},</p>
+                <p>We refer to your request for quotation(s) dated ${new Date(date).toLocaleString()} for vehicle registration number SDF35363.</p>
                 <p>We attach herewith the quotation(s) requested. We trust our quotation(s) will meet with your requirements. Kindly click on the link below to select your preferred quotation and proceed with the renewal.</p>
                 <br/>
                 <!-- Styled Link -->
-                <a href="#" class="btn-link text-decoration-none" style="color: purple; border: 1px solid orange; padding: 8px 16px; border-radius: 4px;">Select Quotation</a>
+                <a href="http://localhost:5173/vehicle-details?quotationid=${id}" class="btn-link text-decoration-none" style="color: purple; border: 1px solid orange; padding: 8px 16px; border-radius: 4px;">Select Quotation</a>
                 <br/>
                 <br/>
                 <!-- Contact Information -->

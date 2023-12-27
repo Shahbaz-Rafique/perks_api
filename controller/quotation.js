@@ -13,15 +13,33 @@ async function Quotation(req,response){
     const now = new Date();
     const dateCreated = strftime('%Y-%m-%d %H:%M:%S', now);
 
-    const data={
-        regNo:regNo,
-        postCode:postCode,
-        name:name,
-        nric:nric,
-        email:email,
-        phone:phone,
-        insurer:insurer,
-        dated:dateCreated,
+    let data={};
+
+    if(insurer.length==1){
+        data={
+            regNo:regNo,
+            postCode:postCode,
+            name:name,
+            nric:nric,
+            email:email,
+            phone:phone,
+            insurer:insurer[0].value,
+            dated:dateCreated,
+            status:"Pending",
+        }
+    }
+    else if(insurer.length==2){
+        data={
+            regNo:regNo,
+            postCode:postCode,
+            name:name,
+            nric:nric,
+            email:email,
+            phone:phone,
+            insurer:`${insurer[0].value},${insurer[1].value}`,
+            dated:dateCreated,
+            status:"Pending",
+        }
     }
     
     connection.query('INSERT INTO quotation SET ?',data,(err,res)=>{

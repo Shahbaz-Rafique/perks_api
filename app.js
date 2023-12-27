@@ -10,6 +10,13 @@ require('./utils/connection');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var QuotationRouter = require('./routes/backend/quotation');
+var getQuotationRouter = require('./routes/backend/getquotation');
+var loginRouter = require('./routes/backend/login');
+var quotationSentRouter = require('./routes/backend/quotationSent');
+var insurerRouter = require('./routes/backend/insurer');
+var getinsurerRouter = require('./routes/backend/getInsurer');
+var getdetailsRouter = require('./routes/backend/getDetails');
+var issueRouter = require('./routes/backend/issue');
 
 var app = express();
 app.use(cors());
@@ -33,6 +40,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/quotation', QuotationRouter);
+app.use('/getQuotations', getQuotationRouter);
+app.use('/login', loginRouter);
+app.use('/quotationSent', quotationSentRouter);
+app.use('/insurer', insurerRouter);
+app.use('/getinsurer', getinsurerRouter);
+app.use('/getdetails', getdetailsRouter);
+app.use('/issue', issueRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
