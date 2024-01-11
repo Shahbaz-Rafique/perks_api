@@ -37,12 +37,6 @@ async function sendEmail(regNo, name, path) {
         </body>
         </html>
         `,
-    attachments: [
-      {
-        filename: 'coverNote.pdf', 
-        path: './test.pdf', 
-      },
-    ],
   };
 
   transporter.sendMail(mailOptions, (error, info) => {

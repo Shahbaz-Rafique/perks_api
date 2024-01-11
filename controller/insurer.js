@@ -10,6 +10,7 @@ async function Insuere(req,response){
     const stampduty=req.body.stampduty;
     const addon=req.body.addon;
     const sst=req.body.sst;
+    const id=req.body.id;
     const file=req.file.filename;
 
     const data={
@@ -22,6 +23,7 @@ async function Insuere(req,response){
         addon:addon,
         sst:sst,
         file:file,
+        quotationid:id,
     };
     
     connection.query('INSERT INTO insurer SET ?',data,(err,res)=>{
