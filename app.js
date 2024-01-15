@@ -17,6 +17,7 @@ var insurerRouter = require('./routes/backend/insurer');
 var getinsurerRouter = require('./routes/backend/getInsurer');
 var getdetailsRouter = require('./routes/backend/getDetails');
 var issueRouter = require('./routes/backend/issue');
+var getDetailsCompRouter = require('./routes/backend/getDetailsComp');
 
 var app = express();
 app.use(cors());
@@ -47,6 +48,7 @@ app.use('/insurer', insurerRouter);
 app.use('/getinsurer', getinsurerRouter);
 app.use('/getdetails', getdetailsRouter);
 app.use('/issue', issueRouter);
+app.use('/getDetailsComp', getDetailsCompRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

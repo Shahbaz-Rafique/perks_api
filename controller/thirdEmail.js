@@ -24,7 +24,7 @@ async function sendEmail(regNo, name, path) {
                 <!-- Email Content -->
                 <p>Dear ${name},</p>
                 <p>Thank you for your purchase of insurance and road tax (if selected) for vehicle registration number ${regNo}.</p>
-                <p>We attach herewith the cover note for your purchase and your road tax (if selected) will be delivered to the residential address provided.</p>
+                <p>We attach herewith the cover note for your purchase and your road tax (if selected)</p>
                 <p>If you have any queries and/or need clarification, please contact us at +603-2779 2419 or email us at enquiry@perks.com.my. Please state your vehicle registration number on all enquiries.</p>
 
                 <!-- Contact Information -->

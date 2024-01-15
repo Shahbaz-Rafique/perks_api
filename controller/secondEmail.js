@@ -30,7 +30,7 @@ async function sendEmail(regno,date,name,id){
                 <p>We attach herewith the quotation(s) requested. We trust our quotation(s) will meet with your requirements. Kindly click on the link below to select your preferred quotation and proceed with the renewal.</p>
                 <br/>
                 <!-- Styled Link -->
-                <a href="http://localhost:5173/vehicle-details?quotationid=${id}" class="btn-link text-decoration-none" style="color: purple; border: 1px solid orange; padding: 8px 16px; border-radius: 4px;">Select Quotation</a>
+                <a href="https://perks-vehicles.netlify.app/vehicle-details?quotationid=${id}" class="btn-link text-decoration-none" style="color: purple; border: 1px solid orange; padding: 8px 16px; border-radius: 4px;">Select Quotation</a>
                 <br/>
                 <br/>
                 <!-- Contact Information -->
