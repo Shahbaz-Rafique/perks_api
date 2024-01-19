@@ -1,9 +1,9 @@
 const { transporter } = require('../utils/nodemailer');
 
-async function sendEmail(regNo, name, path) {
+async function sendEmail(regNo, name, path,email) {
   const mailOptions = {
     from: `PERKS <shahbazrafique429@gmail.com>`,
-    to: 'shahbazrafique101@gmail.com',
+    to: email,
     subject: `Cover Note: ${regNo}`,
     html: `
         <!DOCTYPE html>

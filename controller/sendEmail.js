@@ -1,10 +1,10 @@
 const {transporter}=require('../utils/nodemailer');
 
 
-async function sendEmail(regNo,name){
+async function sendEmail(regNo,name,email){
     const mailOptions = {
         from: `PERKS <shahbazrafique429@gmail.com>`,
-        to: 'shahbazrafique101@gmail.com',
+        to: email,
         subject: `Motor Quotation request recieved for: ${regNo}`,
         html : `
         <!DOCTYPE html>

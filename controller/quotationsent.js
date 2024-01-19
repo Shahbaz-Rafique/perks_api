@@ -52,7 +52,7 @@ async function QuotationSent(req, response) {
         stampduty:stampduty,
         addon:addon,
         sst:sst,
-        file: req.files.file[0].originalname,
+        file: req.files.file[0].filename,
         quotationid:id,
     };
 
@@ -65,7 +65,7 @@ async function QuotationSent(req, response) {
         stampduty:stampduty1,
         addon:addon1,
         sst:sst1,
-        file:req.files.file1?.[0]?.originalname || null,
+        file:req.files.file1?.[0]?.filename || null,
         quotationid:id,
     };
     
@@ -101,7 +101,19 @@ async function QuotationSent(req, response) {
                                             send();
                                         }
                                         async function send() {
-                                            const responseData = await emailer.sendEmail(res[0].regNo,res[0].dated, res[0].name,res[0].Id);
+                                            let sendData={};
+                                            if(insurerCount==1){
+                                                sendData={
+                                                    file1: req.files.file[0].filename
+                                                }
+                                            }
+                                            else if(insurerCount==2){
+                                                sendData={
+                                                    file1: req.files.file[0].filename,
+                                                    file2:req.files.file1?.[0]?.filename || null,
+                                                }
+                                            }
+                                            const responseData = await emailer.sendEmail(res[0].regNo,res[0].dated, res[0].name,res[0].Id,res[0].email,insurerCount,sendData);
                                             response.redirect('http://127.0.0.1:5500/insurer.html')
                                         }
                                         

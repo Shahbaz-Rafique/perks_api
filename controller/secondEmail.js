@@ -1,11 +1,19 @@
 const {transporter}=require('../utils/nodemailer');
+const path = require('path');
 
-
-async function sendEmail(regno,date,name,id){
+async function sendEmail(regno,date,name,id,email,count,files){
+    const attachments = [];
+    console.log(count,files);
+    for (let i = 0; i < count; i++) {
+        attachments.push({
+        path: path.join(__dirname, `../public/files/${files[`file${i + 1}`]}`)
+        });
+    }
+    console.log(attachments);
     const mailOptions = {
         from: `PERKS <shahbazrafique429@gmail.com>`,
-        to: 'shahbazrafique101@gmail.com',
-        subject: `Motor Quotation request recieved for: SDF534633`,
+        to: email,
+        subject: `Motor Quotation request recieved for: ${regno}`,
         html : `
         <!DOCTYPE html>
         <html lang="en">
@@ -26,7 +34,7 @@ async function sendEmail(regno,date,name,id){
         
                 <!-- Email Content -->
                 <p>Dear ${name},</p>
-                <p>We refer to your request for quotation(s) dated ${new Date(date).toLocaleString()} for vehicle registration number SDF35363.</p>
+                <p>We refer to your request for quotation(s) dated ${new Date(date).toLocaleString()} for vehicle registration number ${regno}.</p>
                 <p>We attach herewith the quotation(s) requested. We trust our quotation(s) will meet with your requirements. Kindly click on the link below to select your preferred quotation and proceed with the renewal.</p>
                 <br/>
                 <!-- Styled Link -->
@@ -50,6 +58,7 @@ async function sendEmail(regno,date,name,id){
         </html>
         
         `,
+        attachments: attachments,
     };
 
     transporter.sendMail(mailOptions, (error, info) => {

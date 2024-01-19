@@ -20,7 +20,7 @@ async function Issue(req, response) {
                         response.status(500).json({ message: 'Error updating data' });
                     } else {
                         async function send() {
-                            const responseData = await emailer.sendEmail(res[0].regNo, res[0].name);
+                            const responseData = await emailer.sendEmail(res[0].regNo, res[0].name,res[0].email);
                             response.status(200).json({ message: 'added' });
                         }
                         send();

@@ -48,7 +48,7 @@ async function Quotation(req,response){
         }
         else{
             async function send(){
-                const responseData = await emailer.sendEmail(regNo,name);
+                const responseData = await emailer.sendEmail(regNo,name,email);
                 response.status(200).json({message:"added"}); 
             }
             send();
